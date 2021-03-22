@@ -1,75 +1,74 @@
 # heart-disease-data
-Projenin konusu :  Makine Öğrenimi Algoritmalarıyla Kalp Hastalığını Tahmin Etme
-Sınıflandırma projesi
-Neler yaptık?
-1-Veri analizi ile verideki eğilimleri ve korelasyonlarla incelendi. Kalp hastalığı teşhisinde Hangi özelliklerin en önemli olduğu belirlendi.
-2-Model kısmı: Birden fazla sınıflandırma modeli  (Logistic Regression, K-NN (k-Nearest Neighbors), SVM (Support Vector Machine), Naives Bayes Classifier, Decision Trees, Random Forest.) kullanıldı.En yüksek doğruluk oranı  baz alındı.
+Subject of the project: Predicting Heart Disease Using Machine Learning Algorithms
+Classification project
+What did we do?
+1- Data analysis was used to examine trends and correlations in the data. It was determined which features are most important in the diagnosis of heart disease.
+2-Model part: Multiple classification models (Logistic Regression, K-NN (k-Nearest Neighbors), SVM (Support Vector Machine), Naives Bayes Classifier, Decision Trees, Random Forest.) The highest accuracy rate was used.
 
-VERİ: kaggle dan aldığımız bir veri seti. Veri setimizde kalp krizi tanısı konmuş  hasta ve sağlıklı 303  kişinin verilerinden  var.
-Veri seti 303 satır 14 sütun.14 sütun içinde 13 nitelik ve 1 çıktı var.
-Veri setinde 3 tip data var.
+DATA: a dataset from the kaggle. Our data set includes the data of 303 healthy and patients diagnosed with a heart attack.
+The data set has 303 rows, 14 columns, and 14 columns with 13 attributes and 1 output.
+There are 3 types of data in the data set.
 
-Continous:ölçülebilen nicel veriler(nümerik):age,trestbps(istirahat durumundaki kan basıncı), kolestrol,thalac(max nabız ),oldpeak(egzersize bağlı sp depresyonu),
-Ordinal:sıra ile kategorik değişkenler(0,1,2,3) :cp(göğüs ağrısı şiddeti),restecg(ekg sonuçları ),slope(st segmentinin eğimi),ca(ana damar sayısı), thal(stres durumu )
-Binary:iki olası durum olan atalar(0,1) :   Cinsiyet, fbs(açlık kan basıncı,  0=120 ve 120 den  küçük,  1= 120 den büyük) , Exang(egzersize bağlı anjin 0=yok 1=var) , 
+Continous: measurable quantitative data (numerical): age, trestbps (resting blood pressure), cholesterol, thalac (max pulse), oldpeak (exercise-induced sp depression),
+Ordinal: categorical variables in order (0,1,2,3): cp (severity of chest pain), restecg (ecg results), slope (slope of the st segment), ca (number of major vessels), thal (stress state)
+Binary: ancestors with two possible states (0,1): Gender, fbs (fasting blood pressure, 0 = 120 and less than 120, 1 = greater than 120), Exang (exercise induced angina 0 = not present 1 = present),
 
- 
-Exployarty   data     analysis
-Korelasyon matrisi amacı:bağımlı değişkenlerle bağımsız değişkenler arasındaki ilişkinin gücünü göstrerir.
-Sayıların değeri:ilişkinin gücünü. 
-Korelasyon matrisinde sayılar -1 ile +1 arasına değerler alır.
-Sayı pozitif veya negatif yönden 0’a ne kadar yaklaşırsa  çıktı ile arasındaki ilişki azalır , kalp hastalığı olma durumu o kadar azalır.
-Sayı ne kadar 0 ‘dan uzaklaşırsa (her iki yön için de) çıktı ile arasındaki ilişki artar.
 
-Sayının işareti ise ilişkinin türünü gösterir.
-İşaretler ne anlama geliyor?
-Negatif korelasyon:değişkenlerin bir artarken diğeri azalıyorsa.ters orantı
-Ör:(-0.39)CA(ana damar sayısı arttıkça) ↑ kalp hastası olmadurumu ↓
-Pozitif korelsyon : değişkenlerin birlikte atma durumu. Doğru orantı
-Ör: (0.43)CP(ağrı şiddeti arttıkça)↑   kalp hastası olma durumu  ↓
+Exployarty data analysis
+Correlation matrix purpose: shows the strength of the relationship between dependent variables and independent variables.
+The value of numbers: the strength of the relationship.
+Numbers in the correlation matrix take values ​​between -1 and +1.
+The closer the number gets to 0 from a positive or negative direction, the relationship between it and the output decreases, the less the condition of having a heart disease.
+The further the number moves away from 0 (for both directions), the greater the relationship between it and output.
+
+The sign of the number indicates the type of relationship.
+What do the signs mean?
+Negative correlation: if one of the variables increases while the other is decreasing.
+Ex: (- 0.39) CA (as the number of major vessels increases) ↑ heart disease status ↓
+Positive correlation: the state of the variables being thrown together. Correct proportion
+Ex: (0.43) CP (as the severity of pain increases) ↑ heart disease status ↓
 
 
 
 Machine Learning + Predictive Analytics
-atamalar: 13 özellik, 1 sonuç
-Eğitim seti ve test setinin ayrılması: %20 test seti
-Normalleştirme, modellerin daha ‘rahat’ çalışması için
+Assignments: 13 features, 1 result
+Training set and test set separation: 20% test set
+Normalization, for more "comfortable" operation of the models
 
 
-Modeling/Training
+Modeling / Training
 
-Model denemeleri, 6 model
-	Lojistik regresyon
-Lineer regresyon (-∞, +∞) arasında sonuçlar verir, lojistik regresyon ile bu sonucu (0,1) arasında indirgeyerek sınıflandırma problemini çözebiliriz(sigmoid). Verilen özellikler için sonuç 0.8 ise, 1 ile tanımlandırılan sınıfa dahil olma olasılığı %80. 
-“Lojistik regresyonda parametreler Maximum Likelihood (MLE) yöntemiyle hesaplanıyor. MLE yönteminin amacı sonsuz parametre havuzundan veri setinin görülme olasılığını maksimize eden en iyi parametreleri seçmek.”
-	K-NN (K-Nearest Neighbors)
-Model 2, verilen özelliklerin, eğitim setinde benzeme oranının en yüksek olduğu özelliklere göre yorumlar.
-	SVM (Support Vector Machine)
-Destek Vektör Makineleri, girdileri grafik üzerinden yorumlayarak 0 ve 1 değerlerine dahil olan setleri birbirinden ayırmak için doğrusal veya doğrusal olmayan yardımcı vektörler çizer. Çizilen vektörün bir tarafında kalan (sağ/sol/üst/alt/iç/dış vb.) 0, diğer tarafındaki 1 olur.
-	Naives Bayes Classifier
-Bu modelde her özellik birbirinden bağımsız olarak kabul edilir.
-P(A ┤|  B)=(P(B ┤|  A) .  P(A))/(P(B))
-Sonuç olasılığını bulmak. Her bir veri için sonuç teker teker hesaplanarak, ortalama olasılık elde edilir.
-	Decision Trees
-Karar Ağaçları modeli, çalışma alanlarını birbirinden tekrar tekrar ayırarak, entropiyi(safsızlık ölçütü) en düşük seviyeye indirirerek, bir ağaç oluşturur. Yeni girilen değeri sınıflandırma kararı verirken de bu ağacı kullanır.
-“Bilgi kazanımına dayalı olarak (verimli bir şekilde) bölme, karar ağacı modelinin anahtarıdır.”
-Basit karar verme adımları uygulanarak, büyük miktarlardaki kayıtları, çok küçük kayıt gruplarına bölerek kullanılan bir yapıdır.
+Model trials, 6 models
+Logistic regression
+Linear regression gives results between (-∞, + ∞), we can solve the classification problem (sigmoid) by reducing this result between (0,1) with logistic regression. If the result for the given properties is 0.8, the probability of being included in the class defined by 1 is 80%.
+“Parameters in logistic regression are calculated with the Maximum Likelihood (MLE) method. The purpose of the MLE method is to select the best parameters from the infinite parameter pool that maximizes the probability of seeing the data set. ”
+K-NN (K-Nearest Neighbors)
+Model 2 interprets the given features according to the features with the highest resemblance rate in the training set.
+SVM (Support Vector Machine)
+Support Vector Machines draw linear or nonlinear auxiliary vectors to distinguish sets included in 0 and 1 values ​​by interpreting the inputs on the graph. The remainder of the vector drawn (right / left / top / bottom / inner / outer, etc.) is 0, and 1 on the other side.
+Naives Bayes Classifier
+In this model, each feature is considered independent of each other.
+P (A ┤ | B) = (P (B ┤ | A). P (A)) / (P (B))
+Finding the probability of results. The average probability is obtained by calculating the results one by one for each data.
+Decision Trees
+The Decision Trees model creates a tree by repeatedly separating the study areas, minimizing the entropy (impurity measure). It also uses this tree when making the decision to classify the newly entered value.
+"Splitting (efficiently) based on knowledge acquisition is the key to the decision tree model."
+It is a structure that is used by dividing large amounts of records into very small groups of records by applying simple decision-making steps.
 
 
 
-	Random Forest
-Rastgele(Tesadüfi) Orman modeli, kolektif/topluluk öğrenme yöntemi. Model, eğitim setindeki özelliklerin alt kümelerinden rastgele karar ağaçları oluşturur(alt kümeler çakışabilir). Son kararı vermeden önce oluşturduğu ağaçlardan aldığı oyları kullanır. Oylamada ağırlık kavramı kullanılabilir. Bu kavram ile hata oranı fazla olan ağaçların oyları için düşük, hata oranı az olan ağaçlar için yüksek ağırlık verilir ve sonuca olan etkisi belirlenir.
-Bu modellere göre elimizdeki en iyi sonuç Rastgele(Tesadüfi) Orman modeline ait.
+Random Forest
+Random (Incidental) Forest model, collective / community learning method. The model generates random decision trees from subsets of features in the training set (subsets may overlap). He uses the votes he gets from the trees he has created before making the final decision. The concept of weight can be used in voting. With this concept, low weight is given for the votes of trees with high error rate and high weight is given for trees with low error rate and its effect on the result is determined.
+According to these models, the best result we have belongs to the Random (Random) Forest model.
 Making the Confusion Matrix
-Hata/Karışıklık Matrisi
-[■(X1&Y1@Y2&X2)]
-X1 – Gerçek 1 sayısı
-Y1 - yanlış yapılan 1 tahmini sayısı
-Y2 yanlış yapılan 0 tahmini sayısı
-X2 – Gerçek 0 sayısı
-Accuracy=(X1+X2)/(X1+X2+Y1+Y2)
-Bizim hata matrisimiz:
-[■(21&9@3&28)]
-Accuracy=(21+28)/(21+28+9+3)=49/61≌0.80
+Error / Confusion Matrix
+[■ (X1 & Y1 @ Y2 & X2)]
+X1 - Real number 1
+Y1 - the number of 1 guesses made wrong
+Y2 the number of 0 guesses made wrong
+X2 - Real 0 number
+Accuracy = (X1 + X2) / (X1 + X2 + Y1 + Y2)
+Our error matrix:
+[■ (21 & 9 @ 3 & 28)]
+Accuracy = (21 + 28) / (21 + 28 + 9 + 3) = 49 / 61≌0.80
 Importance of Features
-
