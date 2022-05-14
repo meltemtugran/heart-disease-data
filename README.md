@@ -1,4 +1,4 @@
-# heart-disease-data
+# Predicting heart disease data science project
 Subject of the project: Predicting Heart Disease Using Machine Learning Algorithms
 Classification project
 What did we do?
